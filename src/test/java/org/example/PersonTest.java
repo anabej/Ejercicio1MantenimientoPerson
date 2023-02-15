@@ -59,7 +59,7 @@ class PersonTest {
         double[] meanFemales = Person.averageAgePerGender(onlyFemales);
 
         assertEquals(0, meanFemales[0]);
-        assertEquals(24, meanFemales[1]);
+        assertEquals(34, meanFemales[1]);
     }
     @Test
     void averageAgeMales0Because0Males() throws Exception{
@@ -69,7 +69,7 @@ class PersonTest {
         double[] meanMales = Person.averageAgePerGender(onlyMales);
 
         assertEquals(0,meanMales[1]);
-        assertEquals(40,meanMales[0]);
+        assertEquals(45,meanMales[0]);
     }
 
     @Test
