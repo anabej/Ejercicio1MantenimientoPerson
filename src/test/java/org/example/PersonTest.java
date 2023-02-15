@@ -14,19 +14,19 @@ import java.util.List;
 
 class PersonTest {
     @Test
-    void constructorNameIsRight() throws Exception {
+    void constructorNameOk() throws Exception {
         Person pers = new Person("Ana", 22, "Female");
         assertEquals(pers.name(), "Ana", "Bad name");
     }
 
     @Test
-    void constructorAgeIsRight() throws Exception {
+    void constructorAgeOk() throws Exception {
         Person p = new Person("Ana", 22, "Female");
         assertEquals(p.age(), 22, "Bad age");
     }
 
     @Test
-    void constructorGenderIsRight() throws Exception {
+    void constructorGenderOk() throws Exception {
         Person p = new Person("Ana", 21, "Female");
         assertEquals(p.gender(), "Female", "Bad gender");
 
@@ -35,23 +35,23 @@ class PersonTest {
     }
 
     @Test
-    void badArgumentInConstructorName() {
+    void throwExceptionBadName() {
         assertThrows(Exception.class, () -> new Person(null, 7, "Female"), "Correct name");
     }
 
     @Test
-    void badArgumentInConstructorAge() {
+    void throwExceptionBadAge() {
         assertThrows(Exception.class, () -> new Person("Jose", -7, "Male"), "Correct age");
     }
 
     @Test
-    void badArgumentInConstructorGender() {
+    void throwExceptionBadGender() {
         assertThrows(Exception.class, () -> new Person("Antonio", 59, "Fem"), "Correct gender");
         assertThrows(Exception.class, () -> new Person("Antonio", 59, null), "Correct gender");
     }
 
     @Test
-    void averageAgePerGenderOnlyFemales() throws Exception {
+    void averageAgeFemales0Because0Females() throws Exception {
         List<Person> onlyFemales = new ArrayList<>();
         onlyFemales.add(new Person("Ana", 22, "Female"));
         onlyFemales.add(new Person("Pepa", 46, "Female"));
@@ -62,7 +62,7 @@ class PersonTest {
         assertEquals(24, meanFemales[1]);
     }
     @Test
-    void averageAgePerGenderOnlyMales() throws Exception{
+    void averageAgeMales0Because0Males() throws Exception{
         List<Person> onlyMales = new ArrayList<>();
         onlyMales.add(new Person("Jose",40,"Male"));
         onlyMales.add(new Person("Luis",50,"Male"));
@@ -73,7 +73,7 @@ class PersonTest {
     }
 
     @Test
-    void averageAgePerGenderShouldThrowAnException() {
+    void averageFunctionExc() {
         assertThrows(Exception.class,()-> Person.averageAgePerGender(null));
     }
 
@@ -82,7 +82,7 @@ class PersonTest {
         List<Person> emptyList = new ArrayList<>();
         double[] emptyMean = Person.averageAgePerGender(emptyList);
 
-        assertEquals(0,emptyMean[0],"Males are not empty!");
-        assertEquals(0,emptyMean[1],"Females are not empty!");
+        assertEquals(0,emptyMean[0]);
+        assertEquals(0,emptyMean[1]);
     }
 }
