@@ -61,4 +61,28 @@ class PersonTest {
         assertEquals(0, meanFemales[0]);
         assertEquals(24, meanFemales[1]);
     }
+    @Test
+    void averageAgePerGenderOnlyMales() throws Exception{
+        List<Person> onlyMales = new ArrayList<>();
+        onlyMales.add(new Person("Jose",40,"Male"));
+        onlyMales.add(new Person("Luis",50,"Male"));
+        double[] meanMales = Person.averageAgePerGender(onlyMales);
+
+        assertEquals(0,meanMales[1]);
+        assertEquals(40,meanMales[0]);
+    }
+
+    @Test
+    void averageAgePerGenderShouldThrowAnException() {
+        assertThrows(Exception.class,()-> Person.averageAgePerGender(null));
+    }
+
+    @Test
+    void averageAgePerGenderShouldGiveAnEmptyValue() {
+        List<Person> emptyList = new ArrayList<>();
+        double[] emptyMean = Person.averageAgePerGender(emptyList);
+
+        assertEquals(0,emptyMean[0],"Males are not empty!");
+        assertEquals(0,emptyMean[1],"Females are not empty!");
+    }
 }
